@@ -1,4 +1,4 @@
-FROM node:alpine as builder
+FROM node:16-alpine as builder
 
 USER node
 
@@ -15,4 +15,4 @@ RUN npm run build
 
 FROM nginx
 EXPOSE 80
-COPY --from=builder /app/build /usr/share/nginx/html
+COPY --from=builder /home/node/app/build /usr/share/nginx/html
